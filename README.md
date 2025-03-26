@@ -20,7 +20,7 @@ This Python project provides a robust tool to fetch research papers from PubMed 
 
 - Python 3.8+
 - [Poetry](https://python-poetry.org/) package manager
-- Internet connection
+
 
 ## Installation
 
@@ -31,7 +31,7 @@ pip install poetry
 
 2. Clone the repository
 ```bash
-git clone https://github.com/yourusername/fetch_research_papers.git
+git clone https://github.com/palashshrote/fetch_research_papers.git
 cd fetch_research_papers
 ```
 
@@ -49,19 +49,19 @@ poetry install
 ### Basic Search
 ```bash
 # Search for papers about diabetes drug
-poetry run python src/fetch_pubmed_data/fetch_research_papers.py "diabetes drug"
+poetry run get-papers-list "diabetes drug"
 ```
 
 ### Export to CSV
 ```bash
 # Save results to info.csv
-poetry run python src/fetch_pubmed_data/fetch_research_papers.py "diabetes drug" -f info.csv
+poetry run get-papers-list "diabetes drug" -f info.csv
 ```
 
 ### Debug Mode
 ```bash
 # Enable verbose debugging
-poetry run python src/fetch_pubmed_data/fetch_research_papers.py "diabetes drug" -d
+poetry run get-papers-list "diabetes drug" -d
 ```
 
 ## Program Workflow
