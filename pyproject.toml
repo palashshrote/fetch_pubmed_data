@@ -14,6 +14,8 @@ dependencies = [
 
 [tool.poetry]
 packages = [{include = "fetch_pubmed_data", from = "src"}]
+[tool.poetry.scripts]
+get-papers-list = "src.fetch_pubmed_data.fetch_research_papers:main"
 
 
 [build-system]
