@@ -1,4 +1,4 @@
-This "fetch_papers" contains python program to fetch research papers from "PubMed", and stores the relevant information in info.csv file.
+This "fetch_research_papers" contains python program to fetch research papers from "PubMed", and stores the relevant information in info.csv file.
 
 PubMed is a Entrez db comes under NCBI Entrez system.
 
