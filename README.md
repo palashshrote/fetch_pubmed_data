@@ -1,26 +1,116 @@
-This "fetch_research_papers" contains python program to fetch research papers from "PubMed", and stores the relevant information in info.csv file.
+# PubMed Research Papers Fetcher
 
-PubMed is a Entrez db comes under NCBI Entrez system.
+## Overview
 
-E-utilities are the public API to access PubMed.
+This Python project provides a robust tool to fetch research papers from PubMed using NCBI's E-utilities API. The application allows users to search for research papers, retrieve detailed information, and export the results to a CSV file.
 
-Procedure 
-1. Basic searching API - It retrieve list of UID matching the query.
-   
-   Let's say we want to search for the articles about diabetes drug.
+## Background
 
-   query/term = "diabetes drug", db = "pubmed"
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/) is a free resource maintained by the National Center for Biotechnology Information (NCBI), hosting millions of biomedical and life sciences research papers. The project leverages NCBI's E-utilities public API to efficiently search and retrieve research paper information.
 
-   API - https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&term=diabetes%2Bdrug
+## Key Features
 
-   Result = [40127974,40127847,...]
+- Search research papers using flexible query terms
+- Retrieve comprehensive paper details
+- Export results to CSV
+- Debug mode for troubleshooting
+- Lightweight and easy to use
+
+## Prerequisites
+
+- Python 3.8+
+- [Poetry](https://python-poetry.org/) package manager
+- Internet connection
+
+## Installation
+
+1. Install Poetry
+```bash
+pip install poetry
+```
+
+2. Clone the repository
+```bash
+git clone https://github.com/yourusername/fetch_research_papers.git
+cd fetch_research_papers
+```
+
+3. Configure Poetry (Optional but Recommended)
+```bash
+# Set virtual environment in project directory
+poetry config virtualenvs.in-project true
+
+# Install dependencies
+poetry install
+```
+
+## Usage Examples
+
+### Basic Search
+```bash
+# Search for papers about diabetes drug
+poetry run python src/fetch_pubmed_data/fetch_research_papers.py "diabetes drug"
+```
+
+### Export to CSV
+```bash
+# Save results to info.csv
+poetry run python src/fetch_pubmed_data/fetch_research_papers.py "diabetes drug" -f info.csv
+```
+
+### Debug Mode
+```bash
+# Enable verbose debugging
+poetry run python src/fetch_pubmed_data/fetch_research_papers.py "diabetes drug" -d
+```
+
+## Program Workflow
+
+### 1. Search API
+- Retrieves list of Unique Identifiers (UIDs) matching the query
+- Endpoint: `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi`
+- Example Query: `term="diabetes drug", db="pubmed"`
+
+### 2. Downloading API
+- Fetches document summaries for input UIDs
+- Endpoint: `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi`
+
+### 3. Data Extraction
+- Parses XML response
+- Extracts relevant information:
+  - PubMed ID
+  - Article Title
+  - Publication Date
+  - Authors
+- Stores data in CSV format
+
+## Dependencies
+
+- `requests`: HTTP library for API calls
+- `argparse`: Command-line argument parsing
+- `xml.etree.ElementTree`: XML parsing
+
+## Limitations and Considerations
+
+- Respects NCBI's usage guidelines
+- Rate-limited by NCBI
+- Requires stable internet connection
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## Acknowledgments
+
+- [PubMed E-utilities Documentation](https://eutils.ncbi.nlm.nih.gov/)
+- AI Tools (ChatGPT, Claude) for debugging assistance
+- Poetry for dependency management
 
 
-2. Basic Downloading API - Returns document summaries (DocSums) for a list of input UIDs, and saving the result in root variable.
-
-   API - https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&term=diabetes%2Bdrug&id=40127974,40127847
-
-
-3. Data extraction from XML and saving into .CSV - "root" contains PubmedArticleSet, running a loop for each article and using find/findall method to extract the relevant data and storing it in dict such as pubmed ID, title ...
-
-   and storing the dict for each article in a list "papers" will give us relevant information, which we can store in a info.csv file
+## Contact
+- Name: Palash Shrote
+- Email: palash.shrote.58@gmail.com
