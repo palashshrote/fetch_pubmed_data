@@ -2,61 +2,58 @@
 
 ## 📝 Overview
 
-A powerful Python tool designed to efficiently extract and analyze research papers from PubMed using NCBI's E-utilities API. This application empowers researchers, academics, and data enthusiasts to:
-- Search research papers with precise query terms
+A powerful Python tool designed to streamline research paper discovery from PubMed, leveraging NCBI's E-utilities API. This lightweight application enables researchers, academics, and data enthusiasts to:
+- Search research papers with flexible query terms
 - Retrieve comprehensive paper details
-- Export results seamlessly to CSV
+- Export results directly to CSV
 - Debug and track search processes
 
 ## 🌐 Background
 
-[PubMed](https://pubmed.ncbi.nlm.nih.gov/), maintained by the National Center for Biotechnology Information (NCBI), is a comprehensive free resource hosting millions of biomedical and life sciences research papers. This project leverages NCBI's E-utilities public API to provide programmatic access to this vast scientific knowledge repository.
+[PubMed](https://pubmed.ncbi.nlm.nih.gov/), maintained by the National Center for Biotechnology Information (NCBI), is a free, comprehensive database housing millions of biomedical and life sciences research papers. Our project harnesses NCBI's E-utilities public API to provide efficient, programmatic access to this vast repository of scientific knowledge.
 
 ## ✨ Key Features
 
-- 🔍 Flexible and precise paper searching
+- 🔍 Flexible paper searching capabilities
 - 📊 Comprehensive paper information retrieval
-- 💾 Effortless CSV export
+- 💾 Seamless CSV export functionality
 - 🐞 Integrated debug mode
 - 🚀 Lightweight and user-friendly design
 
 ## 🛠 Prerequisites
 
 - Python 3.8+
-- [Poetry](https://python-poetry.org/) package manager
+- Poetry (recommended for dependency management)
+- Internet connection
 
 ## 💻 Installation
 
-1. Clone the repository
-```bash
-git clone https://github.com/palashshrote/fetch_research_papers.git
-cd fetch_research_papers
-```
+### Installation from TestPyPI
 
-2. Configure Poetry (Recommended)
 ```bash
-# Install project dependencies
-poetry install
+# Install from TestPyPI with dependencies from PyPI
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ fetch-pubmed-data
 ```
 
 ## 🚀 Usage Examples
+### Create a new python file (for ex- app.py)
 
 ### Basic Search
 ```bash
 # Search for papers about diabetes drug
-poetry run get-papers-list "diabetes drug"
+python app.py "diabetes drug"
 ```
 
 ### Export to CSV
 ```bash
 # Save results to info.csv
-poetry run get-papers-list "diabetes drug" -f info.csv
+python app.py "diabetes drug" -f info.csv
 ```
 
 ### Debug Mode
 ```bash
 # Enable verbose debugging
-poetry run get-papers-list "diabetes drug" -d
+python app.py "diabetes drug" -d
 ```
 
 ## 🔬 Program Workflow
@@ -81,26 +78,12 @@ poetry run get-papers-list "diabetes drug" -d
     - Company Affiliation(s)
 - **Output**: Structured CSV file
 
-## 📦 Dependencies
-
-- `requests`: Robust HTTP library for API calls
-- `argparse`: Flexible command-line argument parsing
-- `xml.etree.ElementTree`: Efficient XML parsing
-
 ## ⚠️ Limitations and Considerations
 
 - Adheres to NCBI's usage guidelines
 - Subject to NCBI's rate limiting
 - Requires stable internet connection
 - Dependent on PubMed's XML structure
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
 
 ## 🙏 Acknowledgments
 
@@ -112,6 +95,7 @@ poetry run get-papers-list "diabetes drug" -d
 
 - **Name**: Palash Shrote
 - **Email**: palash.shrote.58@gmail.com
+- **GitHub**: https://github.com/palashshrote
 
 ---
 
