@@ -1,5 +1,6 @@
 import argparse
-from src.fetch_pubmed_data.fetch_research_papers import fetch_pubmed_papers, fetch_paper_details, extract_papers_with_industry_affiliations, save_to_csv 
+# from src.fetch_pubmed_data.fetch_research_papers import fetch_pubmed_papers, fetch_paper_details, extract_papers_with_industry_affiliations, save_to_csv 
+from .fetch_research_papers import fetch_pubmed_papers, fetch_paper_details, extract_papers_with_industry_affiliations, save_to_csv 
 from typing import List, Dict
 
 def fetch_data() -> None:

@@ -1,11 +1,11 @@
 [project]
 name = "fetch-pubmed-data"
-version = "0.1.0"
-description = ""
+version = "0.1.4"
+description = "A Python package to fetch data from research papers from Pubmed based on query"
 authors = [
     {name = "Palash Shrote",email = "palash.shrote.58@gmail.com"}
 ]
-readme = "README.md"
+readme = "readme_pipy.md"
 requires-python = ">=3.12"
 dependencies = [
     "argparse (>=1.4.0,<2.0.0)",
