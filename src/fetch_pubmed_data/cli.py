@@ -1,9 +1,10 @@
 import argparse
-# from src.fetch_pubmed_data.fetch_research_papers import fetch_pubmed_papers, fetch_paper_details, extract_papers_with_industry_affiliations, save_to_csv 
 from .fetch_research_papers import fetch_pubmed_papers, fetch_paper_details, extract_papers_with_industry_affiliations, save_to_csv 
 from typing import List, Dict
 
 def fetch_data() -> None:
+
+    """Query for PubMed research papers."""
     parser = argparse.ArgumentParser(description="Fetch research papers from PubMed and filter those with pharmaceutical/biotech affiliations.")
     parser.add_argument("query", type=str, help="Search query for PubMed")
     parser.add_argument("-d", "--debug", action="store_true", help="Enable debug mode")

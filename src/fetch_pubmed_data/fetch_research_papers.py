@@ -16,7 +16,10 @@ def fetch_pubmed_papers(query: str, max_results: int = 10) -> List[str]:
     response = requests.get(base_url, params=params)
     response.raise_for_status()
 
+    """Parsing xml response """
     root = ET.fromstring(response.content)
+
+    """Extracting PMIDs"""
     return [id_elem.text for id_elem in root.findall(".//Id") if id_elem.text]
 
 def fetch_paper_details(pmids: List[str]) -> ET.Element:
@@ -31,12 +34,14 @@ def fetch_paper_details(pmids: List[str]) -> ET.Element:
     response = requests.get(base_url, params=params)
     response.raise_for_status()
 
+    """Parsing the xml response and returning the root element"""
     return ET.fromstring(response.content)
 
 def extract_papers_with_industry_affiliations(root: ET.Element) -> List[Dict[str, str]]:
-    """Extract papers where at least one author is affiliated with a pharmaceutical or biotech company."""
+    """Extract papers """
     papers: List[Dict[str, str]] = []
 
+    """Looping on the PubmedArticle elements to extract necessary info."""
     for article in root.findall(".//PubmedArticle"):
         title = article.findtext(".//ArticleTitle", default="N/A")
         pmid = article.findtext(".//PMID", default="N/A")
@@ -51,6 +56,7 @@ def extract_papers_with_industry_affiliations(root: ET.Element) -> List[Dict[str
         non_academic_author = "Unknown"
         corresponding_author_email = "Unknown"
 
+        """Looping on the each author element to find email id inside affiliation, upon finding breaking the loop, and conclude that's the non-academic author and corresponding author email"""
         for author in article.findall(".//Author"):
             last_name = author.findtext("LastName", default="Unknown")
             fore_name = author.findtext("ForeName", default="")
@@ -64,7 +70,9 @@ def extract_papers_with_industry_affiliations(root: ET.Element) -> List[Dict[str
                     corresponding_author_email = email_match.group(1).strip() if email_match else aff_text
                     non_academic_author = author_name
                     break  
+        
 
+        """storing data in a list of key-value pairs"""
         papers.append({
             "PubmedID": pmid,
             "Title": title,
